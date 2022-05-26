@@ -11,3 +11,4 @@ Deleting a folder with script
 a script that changes the working directory to the previous one.
 A bash script thatv lists the contents of different directories at once
 A bash script that determines a file type
+How to add a symbolic link
