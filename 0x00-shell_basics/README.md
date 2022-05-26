@@ -3,3 +3,4 @@ Display the contents list of your current directory
 Take me back home
 The long format
 Display all including hidden file in long format
+Display all files, hidden with user and group ID
