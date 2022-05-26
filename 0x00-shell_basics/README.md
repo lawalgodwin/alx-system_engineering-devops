@@ -9,3 +9,4 @@ Moving file from folder to folder
 Deleting files  in folders
 Deleting a folder with script
 a script that changes the working directory to the previous one.
+A bash script thatv lists the contents of different directories at once
