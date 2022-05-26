@@ -8,3 +8,4 @@ Creating a directory using script
 Moving file from folder to folder
 Deleting files  in folders
 Deleting a folder with script
+a script that changes the working directory to the previous one.
