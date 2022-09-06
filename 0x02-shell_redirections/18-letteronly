@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /etc/ssh/sshd_config | grep -e ^[:alpa:]
+cat /etc/ssh/sshd_config | grep -E ^[:alpa:]
