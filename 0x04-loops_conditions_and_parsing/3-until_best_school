@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script prints Best School X10
+
+i=0
+
+until (( i > 10 ))
+do
+    echo "Best School"
+
+    ((i++))
+done
