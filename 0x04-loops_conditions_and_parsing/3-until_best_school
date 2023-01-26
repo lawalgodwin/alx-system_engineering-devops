@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script prints Best School X10
 
-i=0
+i=1
 
 until (( i > 10 ))
 do
