@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script reacts to the SIGTERM signal
 
-sudo echo "$$" >> '/var/run/myscript.pid'
+echo "$$" >> '/var/run/myscript.pid'
 
 trap "echo 'I hate the kill command'; rm -rf /var/run/myscript.pid; exit" SIGTERM
 
