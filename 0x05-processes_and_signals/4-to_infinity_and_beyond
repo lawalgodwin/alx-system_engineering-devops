@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script prints text in an infinit loop at 2 sec interval
+
+while true
+do
+    echo "To infinity and beyond"
+
+    sleep 2
+done
