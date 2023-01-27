@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script prints ALL process in order of hierarchy
+ps -auxf
