@@ -2,4 +2,4 @@
 
 # A regex that matches a repition pattern
 
-puts ARGV[0].scan(/^hb.*n$/).join
+puts ARGV[0].scan(/^hbt{0,3}n$/).join
