@@ -3,4 +3,4 @@
 # A Bash script that uses ssh to connect
 # to your server using the private key ~/.ssh/school
 
-ssh ubuntu@54.146.72.196 -i ~/.ssh/school
+ssh ubuntu@54.144.198.110 -i ~/.ssh/school
