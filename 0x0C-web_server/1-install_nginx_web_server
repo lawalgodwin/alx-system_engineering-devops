@@ -6,11 +6,11 @@
 #	 When querying Nginx at its root / with a GET request (requesting a page) using curl, 
 #	 It must return a page that contains the string Hello World!
 
-apt-get update -y && sudo apt-get upgrade -y
+apt-get update && sudo apt-get upgrade -y
 
 apt-get install nginx -y
 
-echo "Hello World!" > /var/www/html/index.html
+echo "<html><body><h1>Hello Worlid!</h1></body></html>" > /var/www/html/index.html
 
 ufw allow 'Nginx HTTP'
 
