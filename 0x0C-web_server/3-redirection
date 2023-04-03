@@ -3,6 +3,6 @@
 apt update && apt upgrade -y
 apt install nginx -y
 echo "Hello World!" > /var/www/html/index.html
-STRING_TO_REPLACE="server_name _;\n\tlocation =\/redirect_me {\n\t\treturn 301 'https://www.youtube.com/watch?v=QH2-TGUlwu4';\n\t}"
+STRING_TO_REPLACE="server_name _;\n\trewrite ^\/redirect_me 'https://www.youtube.com/watch?v=QH2-TGUlwu4'; permanent"
 sed -i "s/server_name _;/${STRING_TO_REPLACE}/" /etc/nginx/sites-enabled/default
 service nginx start
