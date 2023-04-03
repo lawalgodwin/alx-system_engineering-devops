@@ -5,6 +5,6 @@ apt install nginx -y
 echo "Hello World!" > /var/www/html/index.html
 STRING_TO_REPLACE="server_name _;\n\trewrite ^\/redirect_me 'https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4' permanent;"
 sed -i "s/server_name _;/${STRING_TO_REPLACE}/" /etc/nginx/sites-enabled/default
-STR="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation =\/404.html {\n\t\tinternal;\n\t}"
+STR="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation =\/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
 sed -i "s/listen 80 default_server;/${STR}/" /etc/nginx/sites-enabled/default
 nginx -t && service nginx start
