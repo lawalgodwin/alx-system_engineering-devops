@@ -27,7 +27,7 @@ exec { '404.html':
 
 # customize the default config file
 exec { 'configure-permanent-redirect':
-  command => 'sed -i "s/listen 80 default_server;/listen 80 default_server;\n\tlocation ^\/redirect_me {\n\t\treturn 301 \'https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4\';\n\t}/" /etc/nginx/sites-enabled/default',
+  command => 'sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 \'https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4\';\\n\\t}/" /etc/nginx/sites-enabled/default',
   path    => '/usr/bin'
 }
 
