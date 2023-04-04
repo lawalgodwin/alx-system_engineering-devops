@@ -14,16 +14,15 @@ package { 'nginx':
 }
 
 # configure the index page
-file { '/var/www/html/index.html':
-  ensure  => 'file',
-  content => 'Hello World!'
+exec { 'index.html':
+  command  => 'echo "Hello World!" > /var/www/html/index.html',
+  provider => shell
 }
 
 # write a custom 404 page
-file { '404.html':
-  ensure  => 'file',
-  path    => '/var/www/html/404.html',
-  content => 'Ceci n\'est pas une page.'
+exec { '404.html':
+  command  => 'echo "Ceci n\'est pas une page." > /var/www/html/404.html',
+  provider => shell
 }
 
 # customize the default config file
