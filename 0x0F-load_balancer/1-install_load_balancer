@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Install and Configure HAproxy so that it send traffic to web-01 and web-02
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAproxy can be managed via an init script
+
+# update system package registry
+apt-get update
+apt-get upgrade -y
+
+# Install HAProxy for my ubuntu distro version
+apt-get install --no-install-recommends software-properties-common -y
+add-apt-repository ppa:vbernat/haproxy-2.7
+apt-get install haproxy=2.7.\* -y
+
+# configure haproxy to distribute the request between both servers
+CONFIG_STR=\
+"
+frontend proxy
+	mode http
+	bind *:80
+	default_backend web_servers
+
+backend web_servers
+	balance roundrobin
+	mode http
+	server web-01 54.144.198.110:80 check
+	server web-02 54.152.132.248:80 check
+enabled
+"
+echo "${CONFIG_STR}" | tee -a /etc/haproxy/haproxy.cfg
+
+service haproxy start
