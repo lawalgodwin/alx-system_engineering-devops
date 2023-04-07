@@ -25,8 +25,10 @@ backend web_servers
 	mode http
 	server web-01 54.144.198.110:80 check
 	server web-02 54.152.132.248:80 check
-enabled
 "
 echo "${CONFIG_STR}" | tee -a /etc/haproxy/haproxy.cfg
 
-service haproxy start
+# Configure HAProxy so it c18.204.14.82an be managed via an init script
+echo "enabled" | tee -a /etc/haproxy/haproxy.cfg
+
+service haproxy restart
