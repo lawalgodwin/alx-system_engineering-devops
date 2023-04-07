@@ -29,6 +29,6 @@ backend web_servers
 echo "${CONFIG_STR}" | tee -a /etc/haproxy/haproxy.cfg
 
 # Configure HAProxy so it c18.204.14.82an be managed via an init script
-echo "enabled" | tee -a /etc/haproxy/haproxy.cfg
+echo "enabled" | tee -a /etc/default/haproxy
 
 service haproxy restart
