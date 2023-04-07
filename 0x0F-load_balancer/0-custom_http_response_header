@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Install nginx web server
+apt-get update && sudo apt-get upgrade -y
+
+apt-get install nginx -y
+
+echo "Hello World!" > /var/www/html/index.html
+
+# configure custom 404 page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+str404config="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation \/404.html {\n\t\tinternal;\n\t}"
+sed -i "s/listen 80 default_server;/$str404config/" /etc/nginx/sites-enabled/default
+
+# configure redirect
+str301config="server_name _;\n\tlocation \/redirect_me {\n\t\treturn 301 'https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4';\n\t}"
+sed -i "s/server_name _;/$str301config/" /etc/nginx/sites-enabled/default
+
+# add custom header
+str_custom_header="listen 80 default_server;\n\tadd_header X-Served-By $(hostname);\n"
+sed -i "s/listen 80 default_server;/$str_custom_header/" /etc/nginx/sites-enabled/default
+
+ufw allow 'Nginx HTTP'
+
+service nginx start
