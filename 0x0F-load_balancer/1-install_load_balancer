@@ -8,9 +8,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install HAProxy for my ubuntu distro version
-apt-get install --no-install-recommends software-properties-common -y
-add-apt-repository ppa:vbernat/haproxy-2.7
-apt-get install haproxy=2.7.\* -y
+apt-get install haproxy -y
 
 # configure haproxy to distribute the request between both servers
 CONFIG_STR=\
@@ -29,6 +27,6 @@ backend web_servers
 echo "${CONFIG_STR}" | tee -a /etc/haproxy/haproxy.cfg
 
 # Configure HAProxy so it c18.204.14.82an be managed via an init script
-echo "enabled" | tee -a /etc/default/haproxy
+echo "ENABLED=1" | tee -a /etc/default/haproxy
 
 service haproxy restart
