@@ -7,13 +7,13 @@ display_info()
         echo "$2 $script" | awk '{print "The subdomain "$1" is a "$5" record and points to "$6}'
 }
 
-if [[ "$#" -eq 1 ]]
+if [[ "$#" == 1 ]]
 then
  display_info "$1" "www"
  display_info "$1" "lb-01"
  display_info "$1" "web-01"
  display_info "$1" "web-02"
-elif [[ "$#" -eq 2 ]]
+elif [[ "$#" == 2 ]]
 then
  display_info "$1" "$2"
 fi
