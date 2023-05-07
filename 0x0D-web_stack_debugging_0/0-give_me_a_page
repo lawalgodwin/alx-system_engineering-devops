@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# A script that fixs a continer running a non-responsive web server
+
+sudo service apache2 start
