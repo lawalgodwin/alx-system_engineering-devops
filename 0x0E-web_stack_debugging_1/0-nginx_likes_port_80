@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# A script that debugs an nginx web server not listening on port 80
+
+sudo mkdir -p /var/www/html
+
+sudo cp /usr/share/nginx/html/* /var/www/html/
+
+OLDPATH="\/usr\/share\/nginx\/html"
+
+NEWPATH="\/var\/www\/html"
+
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+sed -i "s/${OLDPATH}/${NEWPATH}/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
