@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# A script that debugs an nginx web server not listening on port 80
+sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+sudo service nginx restart
+pkill nginx
