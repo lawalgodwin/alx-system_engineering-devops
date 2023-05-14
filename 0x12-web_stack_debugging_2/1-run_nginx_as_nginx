@@ -3,6 +3,6 @@
 # under the 'nginx' user account instead
 # of the 'root' user account.
 # this is done for safety from malware that may be in the service to be run
-
+#sed -i "s/www-data/nginx/" /etc/nginx/nginx.conf
 sudo chmod 644 /etc/nginx/nginx.conf
 sudo -u nginx service nginx start
