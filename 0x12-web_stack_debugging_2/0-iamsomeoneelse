@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# A script that tells who is running a command.
+# the first argument is the user to run a command/program with
+# first let's check if user exist
+if id "$1" >/dev/null 2>&1
+then
+  sudo -u "$1" whoami
+fi
+exit
