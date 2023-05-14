@@ -5,5 +5,10 @@
 # this is done for safety from malware that may be in the service to be run
 
 sudo chmod 644 /etc/nginx/nginx.conf
-sudo sed -i "s/www-data/nginx/" /etc/nginx/nginx.conf
+#sudo sed -i "s/www-data/nginx/" /etc/nginx/nginx.conf
+# enable it listen on port 8080
+sudo sed -i "s/80/8080/g" /etc/nginx/sites-enabled/default
+# kill apache service since it is alrady listening on port 8080
+pkill apache2
+# run as nginx webserver with another user account 'nginx'
 sudo -u nginx service nginx start
