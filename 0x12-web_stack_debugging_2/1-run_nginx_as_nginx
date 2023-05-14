@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# A script that fixes bugs and runs nginx webserver
+# under the 'nginx' user account instead
+# of the 'root' user account.
+# this is done for safety from malware that may be in the service to be run
+
+sudo chmod 644 /etc/nginx/nginx.conf
+sudo -u nginx service nginx start
