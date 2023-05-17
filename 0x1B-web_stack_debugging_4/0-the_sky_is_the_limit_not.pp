@@ -2,7 +2,7 @@
 
 exec { 'increase-number-of-open-file-limit':
   command => 'sed -i "s/15/4096/" /etc/default/nginx',
-  path    => '/usr/local/bin:/bin',
+  path    => '/usr/local/bin:/bin/',
   notify  => Service['nginx']
 }
 
