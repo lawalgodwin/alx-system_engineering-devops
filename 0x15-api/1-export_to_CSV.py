@@ -17,7 +17,8 @@ if __name__ == '__main__':
     baseUrl = "https://jsonplaceholder.typicode.com/users"
     url = baseUrl + "/" + employeeId
     response = requests.get(url)
-    employeeName = response.json().get('name')
+    employeeName = response.json().get('username')
+    print(response.json())
     todoUrl = url + "/todos"
     response = requests.get(todoUrl)
     tasks = response.json()
