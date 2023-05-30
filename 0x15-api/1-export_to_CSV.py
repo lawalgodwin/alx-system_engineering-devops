@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""Accessing a REST API for todo lists of employees"""
+"""Export to csv all tasks that are owned by this employee
+   Usage: ./1-export_to_CSV.py $USER_ID
+   Every record in the csv file must be in the format:
+       "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
+   The csv file should be named in the format:
+       $USER_ID.csv
+"""
 
 from csv import writer, QUOTE_ALL
 import requests
