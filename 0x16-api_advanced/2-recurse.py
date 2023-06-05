@@ -13,7 +13,7 @@ def recurse(subreddit, after='', hot_list=[]):
 
     res = requests.get(url, headers=headers, params=p, allow_redirects=False)
     if res.status_code > 299:
-        print("None")
+        return None
     else:
         posts = res.json()['data']['children']
         after = res.json()['data']['after']
