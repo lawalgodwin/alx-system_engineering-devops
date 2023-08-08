@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     """Get the count of subscribers in the given subreddit"""
     headers = {'User-Agent': 'MyAPIConsumer/1.0 by lawalgodwin'}
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code >= 300:
         return 0
     subreddit_info = response.json()
