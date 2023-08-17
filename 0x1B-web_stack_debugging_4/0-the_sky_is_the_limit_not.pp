@@ -1,4 +1,4 @@
-# A puppet manifest that optimises an nginx worker process to handle more requests
+# A puppet manifest that increases the number of files nginx worker process can open(No of requests it can handle concurrently)
 
 exec { 'increase-number-of-open-file-limit':
   command => 'sed -i "s/15/4096/" /etc/default/nginx',
