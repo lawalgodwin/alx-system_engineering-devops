@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # A bash script that generates a MYSQL dump
 # and backs up all databases(and compress the backup)
 # on the server
