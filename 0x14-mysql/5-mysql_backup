@@ -27,6 +27,4 @@ archive_name="$current_date.tar.gz"
 mysqldump -u root -p"$mysql_root_password" --all-databases > "$backup_dir/$dump_file"
 
 # Compress the dump file to a tar.gz archive
-tar -czf "$backup_dir/$archive_name" -C "$backup_dir" "$dump_file"
-
-echo "$dump_file"
+tar -czf "$backup_dir/$archive_name" "$dump_file"
