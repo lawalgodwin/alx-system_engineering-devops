@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# A bash script that backs up all databases on the server
+# Check if the password argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <mysql_root_password>"
+    exit 1
+fi
+
+# Current date in the required format
+current_date=$(date +%d-%m-%Y)
+
+# MySQL root password provided as argument
+mysql_root_password="$1"
+
+# Destination directory for backup
+backup_dir="."
+
+# MySQL dump file name
+dump_file="backup.sql"
+
+# Compressed archive name
+archive_name="$current_date.tar.gz"
+
+# Create MySQL dump
+# mysqldump -u root -p"$mysql_root_password" --all-databases --master-data> "$backup_dir/$dump_file"
+mysqldump -u root -p"$mysql_root_password" --all-databases > "$backup_dir/$dump_file"
+
+# Compress the dump file to a tar.gz archive
+tar -czf "$backup_dir/$archive_name" -C "$backup_dir" "$dump_file"
+
+echo "$dump_file"
