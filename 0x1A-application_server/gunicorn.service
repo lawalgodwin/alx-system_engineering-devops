@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve Airbnb content
+After=network.target
+
+[Service]
+User=gunicorn
+Group=gunicorn
+WorkingDirectory=/srv/AirBnB_clone_v4/web_dynamic
+ExecStart=gunicorn -c gunicorn_airbnb.conf.py 2-hbnb:app
+
+[Install]
+WantedBy=multi-user.target
