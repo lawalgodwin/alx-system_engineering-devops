@@ -1,13 +1,30 @@
-#!/usr/bin/env bash
-# Define the Gunicorn process name
+#!/bin/bash
+# A bash script that gracefully shutdown service without downtime
 GUNICORN_PROCESS="gunicorn"
 
+# Function to check if Gunicorn is running
+check_gunicorn_running() {
+   if pgrep -x "$GUNICORN_PROCESS" > /dev/null; then
+      return 0  # Gunicorn is running
+   else
+      return 1  # Gunicorn is not running
+   fi
+}
+
 # Check if Gunicorn is running
-if pgrep -x "$GUNICORN_PROCESS" > /dev/null
-  then
+if check_gunicorn_running; then
     # Send a graceful reload signal to Gunicorn
     echo "Reloading $GUNICORN_PROCESS gracefully..."
     kill -HUP "$(pgrep -x "$GUNICORN_PROCESS")"
-  else
+
+    # Wait for Gunicorn to restart
+    sleep 2
+    # Check if Gunicorn is still running after reload
+    if check_gunicorn_running; then
+       echo "$GUNICORN_PROCESS has been reloaded."
+    else
+       echo "Failed to reload $GUNICORN_PROCESS. Please check the logs for errors."
+    fi
+else
     echo "$GUNICORN_PROCESS is not running."
 fi
