@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Define the Gunicorn process name
 GUNICORN_PROCESS="gunicorn"
 
